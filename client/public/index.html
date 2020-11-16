@@ -27,7 +27,13 @@
     <title>🛍️-Shop-Shop</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+    
+      stripe.redirectToCheckout({
+        sessionId: 'cs_test_b0crhJRX3dpOaMMIYoXif9AlX0WiMCjiCt9sOV6U24II4TBsGJ5bVouDwq'
+      });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

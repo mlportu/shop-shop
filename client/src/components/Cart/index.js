@@ -1,15 +1,17 @@
 import React from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
+import React, { useEffect } from 'react';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART } from '../../utils/actions';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
+import {idbPromise} from '../../utils/helpers';
 
 const Cart = () => {
 
@@ -19,6 +21,17 @@ const Cart = () => {
   function toggleCart () {
       dispatch({ type: TOGGLE_CART })
   }
+
+  useEffect(() => {
+    async function getCart() {
+      const cart = await idbPromise('cart', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    };
+  
+    if (!state.cart.length) {
+      getCart();
+    }
+  }, [state.cart.length, dispatch]);
 
   function calculateTotal() {
       let sum = 0;

@@ -6,11 +6,11 @@ import Auth from '../../utils/auth';
 import './style.css';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import {idbPromise} from '../../utils/helpers';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
-import {idbPromise} from '../../utils/helpers';
 
-const stripePromise = loadStripe('cs_test_b0crhJRX3dpOaMMIYoXif9AlX0WiMCjiCt9sOV6U24II4TBsGJ5bVouDwq');
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { useLazyQuery } from '@apollo/react-hooks';
+
 import React, { useEffect } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
@@ -8,10 +8,9 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
 import {idbPromise} from '../../utils/helpers';
+
+const stripePromise = loadStripe('cs_test_b0crhJRX3dpOaMMIYoXif9AlX0WiMCjiCt9sOV6U24II4TBsGJ5bVouDwq');
 
 const Cart = () => {
 
